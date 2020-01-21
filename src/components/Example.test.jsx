@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Nav from './Nav';
+import Example from './Example';
 
-describe('Nav component', () => {
+describe('Example component', () => {
   it('renders without crashing', () => {
-    shallow(<Nav />);
+    shallow(<Example />);
   });
 });
