@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import FontSize from './FontSize';
 
 // Implement major header
 class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontSize: '18px',
+      fontSize: '8',
     };
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      fontSize: e.target.value,
+    });
   }
 
   render() {
@@ -22,13 +29,7 @@ class Nav extends Component {
           <li className="example">
             <input type="text" placeholder="Type something" />
           </li>
-          <li className="fontSize">
-            <button type="button">
-              <span style={{ fontWeight: 600 }}>{fontSize}</span>
-              <i className="fas fa-caret-down" />
-            </button>
-            <input type="range" min="8" max="300" />
-          </li>
+          <FontSize fontSize={fontSize} handleChange={this.handleChange} />
           <li className="colorMode">
             <button type="button">
               <i className="fas fa-fill-drip" />

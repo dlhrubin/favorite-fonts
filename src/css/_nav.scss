@@ -101,6 +101,14 @@ nav {
         height: 14px;
         background: $bright-accent;
         border-radius: 50%;
+        transition: 0.3s;
+    }
+    input:hover::-webkit-slider-thumb {
+        transform: scale(1.1);
+    }
+    input:focus::-webkit-slider-thumb {
+        transform: scale(1.4);
+
     }
 }
 
