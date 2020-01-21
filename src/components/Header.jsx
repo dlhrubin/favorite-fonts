@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Implement minor header
 function Header() {
   return (
     <div className="minor-nav">

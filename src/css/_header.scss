@@ -4,7 +4,6 @@
 //}
 
 .minor-nav {
-    font-family: "Roboto", sans-serif;
     border-bottom: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
@@ -16,12 +15,10 @@
         margin: 0 2px;
     }
     ul {
-        display: flex;
         padding-right: 3px;
         margin: 14px 0 18px 0px;
     }
     li {
-        list-style-type: none;
         padding: 0px 10px;
     }
     button {

@@ -1,0 +1,140 @@
+nav {
+    margin: 17px 60px;
+    font-size: 0.95em;
+    color: $medium-gray;
+    ul {
+        height: 44px;
+        width: 100%;
+        margin: 0;
+        justify-content: stretch;
+        align-items: center;
+        padding: 0;
+        border: 1px solid lightgray;
+        border-radius: 50px;
+    }
+    li {
+        height: 100%;
+        border-right: 1px solid lightgray;
+        display: flex;
+        align-items: center;
+    }
+    input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 400;
+        outline: none;
+    }
+    input[type="text"]::placeholder {
+        font-weight: 500;
+    }
+}
+
+.search {
+    flex-grow: 1;
+    position: relative;
+    padding-left: 20px;
+    .fas {
+        margin-right: 10px;
+        font-size: 1.1em;
+    }
+    input {
+        border: none;
+        padding: 0px 6px;   
+    }
+}
+
+.example {
+    flex-grow: 1;
+    input {
+        padding: 3.2px 0;
+        margin: 0 15px;
+        border: none;
+        border-bottom: 1px solid lightgray;
+    }
+}
+
+.fontSize {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    flex: 1.5;
+    button {
+        margin-right: 20px;
+        height: 100%;
+        width: 110px;
+        background: none;
+        border: none;
+        border-radius: 5px;
+    }
+    button:focus {
+        background-color: $pale-accent;
+        span {
+            color: $bright-accent;
+        }
+        .fas {
+            transform: rotate(180deg);
+        }
+    }
+    span {
+        margin-right: 8px;
+        color: black;
+    }
+    .fas {
+        font-size: 1.1em;
+    }
+    input {
+        -webkit-appearance: none;
+        height: 2.8px;
+        background-color: $pale-accent;
+        outline: none;
+        width: 100%;
+        margin-right: 10px;
+    }
+    input::-webkit-slider-thumb {
+        cursor: pointer;
+        -webkit-appearance: none;
+        width: 14px;
+        height: 14px;
+        background: $bright-accent;
+        border-radius: 50%;
+    }
+}
+
+.colorMode, .view, .reset {
+    padding: 0px 4px;
+    height: 80%;
+
+    button {
+        font-size: 1.1em;
+        color: $medium-gray;
+        width: 37px;
+        height: 37px;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        border-radius: 50%;
+        border: none;
+        background: none;
+    }
+    button:hover {
+        background: rgb(240, 240, 240);
+    }
+}
+
+.colorMode {
+    .fas {
+        border-bottom: 4px solid lightgray;
+        padding-bottom: 3px;
+        width: 25px;
+        text-align: center;
+
+    }
+}
+
+.reset {
+    border: none;
+}

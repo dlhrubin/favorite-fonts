@@ -1,11 +1,26 @@
 $medium-gray: rgb(105, 105, 105);
 $bright-accent: #ff5252;
+$pale-accent: rgba(255, 82, 82, 0.16);
 
 body {
     margin: 0;
+    font-family: "Roboto", sans-serif;
+    height: 120vh;
 }
 
 button {
     cursor: pointer;
     outline: none;
+    transition: 0.2s;
+}
+
+ul {
+    display: flex;
+}
+li {
+    list-style-type: none;
+}
+
+.fa-caret-down {
+    color: $bright-accent;
 }
