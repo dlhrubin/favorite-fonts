@@ -19,7 +19,6 @@ nav {
         align-items: center;
     }
     input[type="text"] {
-        width: 100%;
         box-sizing: border-box;
         font-family: inherit;
         font-size: inherit;
@@ -35,23 +34,35 @@ nav {
     flex-grow: 1;
     position: relative;
     padding-left: 20px;
-    .fas {
+    .fa-search {
         margin-right: 10px;
         font-size: 1.1em;
     }
     input {
+        width: 83%;
         border: none;
         padding: 0px 6px;   
+    }
+    button {
+        visibility: hidden;
+    }
+    .fa-times {
+        color: $lighter-gray;
+        font-size: 1.4em;
     }
 }
 
 .example {
     flex-grow: 1;
     input {
+        width: 100%;
         padding: 3.2px 0;
         margin: 0 15px;
         border: none;
         border-bottom: 1px solid lightgray;
+    }
+    input:focus {
+        border-bottom: 2px solid $bright-accent;
     }
 }
 
@@ -99,7 +110,7 @@ nav {
         -webkit-appearance: none;
         width: 14px;
         height: 14px;
-        background: $bright-accent;
+        background-color: $bright-accent;
         border-radius: 50%;
         transition: 0.3s;
     }
@@ -112,34 +123,33 @@ nav {
     }
 }
 
+.icon-btn {
+    font-size: 1.1em;
+    color: $medium-gray;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: none;
+}
+.icon-btn:hover {
+    background-color: rgb(240, 240, 240);
+}
+
 .colorMode, .view, .reset {
     padding: 0px 4px;
     height: 80%;
-
-    button {
-        font-size: 1.1em;
-        color: $medium-gray;
-        width: 37px;
-        height: 37px;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-        border-radius: 50%;
-        border: none;
-        background: none;
-    }
-    button:hover {
-        background: rgb(240, 240, 240);
-    }
 }
 
 .colorMode {
     .fas {
-        border-bottom: 4px solid lightgray;
+        border-bottom: 4px solid $lighter-gray;
         padding-bottom: 3px;
         width: 25px;
         text-align: center;
-
     }
 }
 

@@ -1,4 +1,5 @@
 $medium-gray: rgb(105, 105, 105);
+$lighter-gray: rgb(184, 184, 184);
 $bright-accent: #ff5252;
 $pale-accent: rgba(255, 82, 82, 0.16);
 
@@ -11,7 +12,6 @@ body {
 button {
     cursor: pointer;
     outline: none;
-    transition: 0.2s;
 }
 
 ul {

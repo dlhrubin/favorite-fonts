@@ -8,6 +8,30 @@ describe('App component', () => {
   });
 });
 
+describe('Search bar', () => {
+  it('should clear when close button is clicked', () => {
+    const wrapper = mount(<App />);
+    wrapper.find('#search').simulate('change', { target: { value: 'a' } });
+    wrapper.update();
+    expect(wrapper.find('#search').props().value).toEqual('a');
+    wrapper.find('#reset-query').simulate('click');
+    expect(wrapper.find('#search').props().value).toEqual('');
+  });
+  it('should hide delete button when empty', () => {
+    const wrapper = mount(<App />);
+    // Delete button should be hidden at start because search bar is empty
+    expect(wrapper.find('#reset-query').props().style.visibility).toEqual('hidden');
+    wrapper.find('#search').simulate('change', { target: { value: 'a' } });
+    wrapper.update();
+    // Delete button should be visible when search bar has content
+    expect(wrapper.find('#reset-query').props().style.visibility).toEqual('visible');
+    wrapper.find('#search').simulate('change', { target: { value: '  ' } });
+    wrapper.update();
+    // Delete button should be hidden when search bar has only whitespace
+    expect(wrapper.find('#reset-query').props().style.visibility).toEqual('hidden');
+  });
+});
+
 describe('Font size controls', () => {
   it('should change displayed font size when slider changes', () => {
     const wrapper = mount(<App />);
