@@ -1,0 +1,32 @@
+$medium-gray: rgb(105, 105, 105);
+$lighter-gray: rgb(184, 184, 184);
+$white-gray: rgb(240, 240, 240);
+$bright-accent: #ff5252;
+$pale-accent: rgba(255, 82, 82, 0.16);
+
+:export { 
+    brightAccent: $bright-accent;
+    paleAccent: $pale-accent; 
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    height: 120vh;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+ul {
+    display: flex;
+}
+li {
+    list-style-type: none;
+}
+
+.fa-caret-down {
+    color: $bright-accent;
+}
