@@ -30,99 +30,6 @@ nav {
     }
 }
 
-.search {
-    flex-grow: 1;
-    position: relative;
-    padding-left: 20px;
-    .fa-search {
-        margin-right: 10px;
-        font-size: 1.1em;
-    }
-    input {
-        width: 83%;
-        border: none;
-        padding: 0px 6px;   
-    }
-    button {
-        visibility: hidden;
-    }
-    .fa-times {
-        color: $lighter-gray;
-        font-size: 1.4em;
-    }
-}
-
-.example {
-    flex-grow: 1;
-    input {
-        width: 100%;
-        padding: 3.2px 0;
-        margin: 0 15px;
-        border: none;
-        border-bottom: 1px solid lightgray;
-    }
-    input:focus {
-        border-bottom: 2px solid $bright-accent;
-    }
-}
-
-.fontSize {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    flex: 1.5;
-    button {
-        margin-right: 20px;
-        height: 100%;
-        width: 110px;
-        background: none;
-        border: none;
-        border-radius: 5px;
-    }
-    button:focus {
-        background-color: $pale-accent;
-        span {
-            color: $bright-accent;
-        }
-        .fas {
-            transform: rotate(180deg);
-        }
-    }
-    span {
-        margin-right: 8px;
-        color: black;
-    }
-    .fas {
-        font-size: 1.1em;
-    }
-    input {
-        -webkit-appearance: none;
-        height: 2.8px;
-        background-color: $pale-accent;
-        outline: none;
-        width: 100%;
-        margin-right: 10px;
-    }
-    input::-webkit-slider-thumb {
-        cursor: pointer;
-        -webkit-appearance: none;
-        width: 14px;
-        height: 14px;
-        background-color: $bright-accent;
-        border-radius: 50%;
-        transition: 0.3s;
-    }
-    input:hover::-webkit-slider-thumb {
-        transform: scale(1.1);
-    }
-    input:focus::-webkit-slider-thumb {
-        transform: scale(1.4);
-
-    }
-}
-
 .icon-btn {
     font-size: 1.1em;
     color: $medium-gray;
@@ -136,7 +43,7 @@ nav {
     background: none;
 }
 .icon-btn:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: $white-gray;
 }
 
 .colorMode, .view, .reset {

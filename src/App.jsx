@@ -49,10 +49,10 @@ class App extends Component {
     }
   }
 
-  // Update font size on user input
-  handleChangeFontSize = (e) => {
+  // Update font size on user input (slider or menu selection)
+  handleChangeFontSize = (e, newSize) => {
     this.setState({
-      fontSize: e.target.value,
+      fontSize: newSize || e.target.value,
     });
   }
 

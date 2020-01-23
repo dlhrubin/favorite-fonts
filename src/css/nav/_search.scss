@@ -1,0 +1,21 @@
+.search {
+    flex-grow: 1;
+    position: relative;
+    padding-left: 20px;
+    .fa-search {
+        margin-right: 10px;
+        font-size: 1.1em;
+    }
+    input {
+        width: 83%;
+        border: none;
+        padding: 0px 6px;   
+    }
+    button {
+        visibility: hidden;
+    }
+    .fa-times {
+        color: $lighter-gray;
+        font-size: 1.4em;
+    }
+}

@@ -44,4 +44,17 @@ describe('Font size controls', () => {
     expect(wrapper.find('#slider').props().value).toEqual('50');
     expect(wrapper.find('#currentSize').text()).toEqual('50px');
   });
+  it('should change displayed font size when dropdown menu option is clicked', () => {
+    const wrapper = mount(<App />);
+    // Initial value of display should be 8
+    expect(wrapper.find('#currentSize').text()).toEqual('8px');
+    // Open font size selection menu
+    wrapper.find('#fontSize').simulate('click');
+    wrapper.update();
+    // On clicking second font size option, display should equal the value of that option
+    const newSize = wrapper.find('#sizeMenu').find('span').at(1);
+    newSize.simulate('click');
+    wrapper.update();
+    expect(wrapper.find('#currentSize').text()).toEqual(`${newSize.text()}px`);
+  });
 });
