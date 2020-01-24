@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './components/Header';
 import Nav from './components/Nav';
+import Main from './components/Main';
 
 // Implement stateful App component
 class App extends Component {
@@ -57,21 +58,28 @@ class App extends Component {
   }
 
   render() {
-    const { search, fontSize } = this.state;
+    const { search, exampleText, fontSize } = this.state;
     return (
-      <div className="App">
-        <header>
-          <Header />
-          <Nav
+      <React.StrictMode>
+        <div className="App">
+          <header>
+            <Header />
+            <Nav
+              query={search}
+              fontSize={fontSize}
+              changeSearch={this.handleChangeSearch}
+              deleteQuery={this.handleDelete}
+              changeExample={this.handleChangeExample}
+              changeFontSize={this.handleChangeFontSize}
+            />
+          </header>
+          <Main
             query={search}
+            example={exampleText}
             fontSize={fontSize}
-            changeSearch={this.handleChangeSearch}
-            deleteQuery={this.handleDelete}
-            changeExample={this.handleChangeExample}
-            changeFontSize={this.handleChangeFontSize}
           />
-        </header>
-      </div>
+        </div>
+      </React.StrictMode>
     );
   }
 }

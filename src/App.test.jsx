@@ -1,6 +1,11 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import App from './App';
+import axios from 'axios';
+import response from './components/__fixtures__/response';
+
+jest.mock('axios');
+axios.get.mockResolvedValue(response);
 
 describe('App component', () => {
   it('renders without crashing', () => {

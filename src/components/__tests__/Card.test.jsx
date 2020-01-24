@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Search from './Search';
+import Card from '../Card';
 
-describe('Search component', () => {
+describe('Card component', () => {
   it('renders without crashing', () => {
-    shallow(<Search />);
+    shallow(<Card />);
   });
 });
