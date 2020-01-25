@@ -40,7 +40,7 @@ class App extends Component {
 
   // Update example text when user types in "Type something" box
   handleChangeExample = (e) => {
-    const input = e.target.value.trim();
+    const input = e.target.value;
     const { exampleText } = this.state;
     // Update state only if user input is different from previous input
     if (input !== exampleText) {
@@ -66,6 +66,7 @@ class App extends Component {
             <Header />
             <Nav
               query={search}
+              example={exampleText}
               fontSize={fontSize}
               changeSearch={this.handleChangeSearch}
               deleteQuery={this.handleDelete}
@@ -74,8 +75,8 @@ class App extends Component {
             />
           </header>
           <Main
-            query={search}
-            example={exampleText}
+            query={search.trim()}
+            example={exampleText.trim()}
             fontSize={fontSize}
           />
         </div>

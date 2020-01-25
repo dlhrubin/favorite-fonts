@@ -15,7 +15,7 @@ class Main extends Component {
 
   // Fetch font information
   componentDidMount() {
-    axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${config.KEY}&sort=popularity`)
+    return axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${config.KEY}&sort=popularity`)
       .then((res) => {
         this.setState({
           fonts: res.data.items,
@@ -33,11 +33,11 @@ class Main extends Component {
     return (
       <main>
         <p>
-Viewing 
+Viewing
           {' '}
           <span>{fontCards.length}</span>
           {' '}
-of 
+of
           {' '}
           {fonts.length}
           {' '}

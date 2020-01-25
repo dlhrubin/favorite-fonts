@@ -7,13 +7,13 @@ import FontSize from './FontSize';
 // Implement major header
 function Nav(props) {
   const {
-    query, fontSize, changeSearch, deleteQuery, changeExample, changeFontSize,
+    query, example, fontSize, changeSearch, deleteQuery, changeExample, changeFontSize,
   } = props;
   return (
     <nav>
       <ul>
         <Search query={query} handleDelete={deleteQuery} handleChange={changeSearch} />
-        <Example handleChange={changeExample} />
+        <Example example={example} handleChange={changeExample} />
         <FontSize fontSize={fontSize} handleChange={changeFontSize} />
         <li className="colorMode">
           <button className="icon-btn" type="button">
@@ -38,6 +38,7 @@ function Nav(props) {
 // Set defaults
 Nav.defaultProps = {
   query: '',
+  example: '',
   fontSize: '8',
   changeSearch: () => {},
   deleteQuery: () => {},
@@ -48,6 +49,7 @@ Nav.defaultProps = {
 // Define propTypes
 Nav.propTypes = {
   query: PropTypes.string,
+  example: PropTypes.string,
   fontSize: PropTypes.string,
   changeSearch: PropTypes.func,
   deleteQuery: PropTypes.func,
