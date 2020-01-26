@@ -7,7 +7,7 @@ import FontSize from './FontSize';
 // Implement major header
 function Nav(props) {
   const {
-    query, example, fontSize, changeSearch, deleteQuery, changeExample, changeFontSize,
+    query, example, fontSize, changeSearch, deleteQuery, changeExample, changeFontSize, reset
   } = props;
   return (
     <nav>
@@ -25,7 +25,7 @@ function Nav(props) {
             <i className="fas fa-list-alt" />
           </button>
         </li>
-        <li className="reset">
+        <li className="reset" onClick={reset}>
           <button className="icon-btn" type="button">
             <i className="fas fa-redo-alt" />
           </button>
@@ -44,6 +44,7 @@ Nav.defaultProps = {
   deleteQuery: () => {},
   changeExample: () => {},
   changeFontSize: () => {},
+  reset: () => {},
 };
 
 // Define propTypes
@@ -55,6 +56,7 @@ Nav.propTypes = {
   deleteQuery: PropTypes.func,
   changeExample: PropTypes.func,
   changeFontSize: PropTypes.func,
+  reset: PropTypes.func,
 };
 
 export default Nav;

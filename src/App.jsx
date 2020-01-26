@@ -4,15 +4,17 @@ import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
 
+const DEFAULTS = {
+  search: '',
+  exampleText: '',
+  fontSize: '40',
+};
+
 // Implement stateful App component
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: '',
-      exampleText: '',
-      fontSize: '40',
-    };
+    this.state = DEFAULTS;
   }
 
     // Note to self: find way to consolidate search and example handle changes to make code more DRY
@@ -57,6 +59,11 @@ class App extends Component {
     });
   }
 
+  // Reset to display all font cards sorted by popularity with default example text
+  handleReset = () => {
+    this.setState(DEFAULTS);
+  }
+
   render() {
     const { search, exampleText, fontSize } = this.state;
     return (
@@ -72,6 +79,7 @@ class App extends Component {
               deleteQuery={this.handleDelete}
               changeExample={this.handleChangeExample}
               changeFontSize={this.handleChangeFontSize}
+              reset={this.handleReset}
             />
           </header>
           <Main
@@ -79,6 +87,9 @@ class App extends Component {
             example={exampleText.trim()}
             fontSize={fontSize}
           />
+          <button className="to-top">
+            <i className="fas fa-arrow-up"></i>
+          </button>
         </div>
       </React.StrictMode>
     );

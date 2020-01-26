@@ -22,7 +22,6 @@ class Card extends Component {
         displayed: innerTrimmed || DEFAULT_TEXT,
       });
     }
-
   }
 
   render() {

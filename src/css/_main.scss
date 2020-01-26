@@ -70,3 +70,27 @@ main {
     outline: none;
 }
 
+.no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $lighter-gray;
+    font-family: "Consolas";
+    span {
+        text-align: center;
+        font-size: 10em;
+        padding: 60px 0 35px 0;
+    }
+    p {
+        text-align: center;
+        font-size: 1em;
+    }
+}
+
+/* To top button */
+
+.to-top {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

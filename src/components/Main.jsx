@@ -10,6 +10,7 @@ class Main extends Component {
     super(props);
     this.state = {
       fonts: [],
+      filtered: []
     };
   }
 
@@ -17,8 +18,9 @@ class Main extends Component {
   componentDidMount() {
     return axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${config.KEY}&sort=popularity`)
       .then((res) => {
+        const fonts = res.data.items
         // Import fonts into index.html
-        res.data.items.forEach((font) => {
+        fonts.forEach((font) => {
           const formattedName = font.family.replace(/\s+/g, '+')
           const defaultVariant = (font.variants.includes("regular")) ? "" : ":" + font.variants[0];
           const link = document.createElement('link');
@@ -28,7 +30,7 @@ class Main extends Component {
         })
         // Store font information
         this.setState({
-          fonts: res.data.items,
+          fonts,
         });
       })
       .catch((res) => {
@@ -38,8 +40,15 @@ class Main extends Component {
 
   render() {
     const { fonts } = this.state;
-    const { example, fontSize } = this.props;
-    const fontCards = fonts.map((font) => <Card key={font.family.replace(/\s+/g, '-').toLowerCase()} name={font.family} text={example} size={fontSize} numStyles={font.variants.length}/>);
+    const { query, example, fontSize } = this.props;
+    // Filter font list based on search query
+    const fontCards = fonts
+      .filter((font) => font.family.toLowerCase().includes(query))
+      .map((font) => {
+        const fontKey = font.family.replace(/\s+/g, '-').toLowerCase();
+        return <Card key={fontKey} name={font.family} text={example} size={fontSize} numStyles={font.variants.length}/>
+      });
+    const mainDisplay = fontCards.length ? fontCards.slice(0, 60) : <div className="no-results"><span>{"(>_<)"}</span><p>No fonts found!</p></div>
     return (
       <main>
         <p>
@@ -54,7 +63,7 @@ of
 font families
         </p>
         <div className="font-grid">
-          {fontCards}
+          {mainDisplay}
         </div>
       </main>
     );
