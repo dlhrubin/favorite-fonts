@@ -90,7 +90,19 @@ main {
 /* To top button */
 
 .to-top {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    position: fixed;
+    right: 65px;
+    bottom: 65px;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: -0.5px 1.5px 5px $lighter-gray;
+    width:  55px;
+    height: 55px;
+    color: $medium-gray;
+    font-size: 1.3em;
+}
+
+.to-top:hover {
+    background-color: rgb(230,230,230);
 }

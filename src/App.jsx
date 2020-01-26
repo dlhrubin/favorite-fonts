@@ -64,6 +64,11 @@ class App extends Component {
     this.setState(DEFAULTS);
   }
 
+  // Scroll to top of page
+  handleToTop = () => {
+    window.scrollTo(0,0);
+  }
+
   render() {
     const { search, exampleText, fontSize } = this.state;
     return (
@@ -87,7 +92,7 @@ class App extends Component {
             example={exampleText.trim()}
             fontSize={fontSize}
           />
-          <button className="to-top">
+          <button className="to-top" onClick={this.handleToTop}>
             <i className="fas fa-arrow-up"></i>
           </button>
         </div>
