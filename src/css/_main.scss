@@ -67,32 +67,6 @@ main {
 }
 
 .text-container {
-    position: relative;
-    textarea {
-        position: relative;
-        resize: none;
-        outline: none;
-        padding: 0;
-        border: none;
-        z-index:1 ;
-        overflow: hidden;
-    }
-    
-    .size-setter {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: auto;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        opacity: 0;
-        display: block;
-    }
-    
-    textarea, .size-setter {
-        font-size: 20px;
-        font-family: 'Roboto';
-        width: 100%;
-    }
+    outline: none;
 }
 

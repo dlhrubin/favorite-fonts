@@ -42,9 +42,9 @@ describe('Search bar', () => {
 describe('Font size controls', () => {
   it('should change displayed font size when slider changes', () => {
     const wrapper = mount(<App />);
-    // Initial value of slider and display should be 8
-    expect(wrapper.find('#slider').props().value).toEqual('8');
-    expect(wrapper.find('#currentSize').text()).toEqual('8px');
+    // Initial value of slider and display should be 40
+    expect(wrapper.find('#slider').props().value).toEqual('40');
+    expect(wrapper.find('#currentSize').text()).toEqual('40px');
     wrapper.find('#slider').simulate('change', { target: { value: '50' } });
     wrapper.update();
     // On changing slider to 50, value of slider and display should be 50
@@ -53,8 +53,8 @@ describe('Font size controls', () => {
   });
   it('should change displayed font size when dropdown menu option is clicked', () => {
     const wrapper = mount(<App />);
-    // Initial value of display should be 8
-    expect(wrapper.find('#currentSize').text()).toEqual('8px');
+    // Initial value of display should be 40
+    expect(wrapper.find('#currentSize').text()).toEqual('40px');
     // Open font size selection menu
     wrapper.find('#fontSize').simulate('click');
     wrapper.update();

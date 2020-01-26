@@ -11,7 +11,7 @@ class App extends Component {
     this.state = {
       search: '',
       exampleText: '',
-      fontSize: '8',
+      fontSize: '40',
     };
   }
 

@@ -54,7 +54,7 @@ font families
 Main.defaultProps = {
   query: '',
   example: '',
-  fontSize: '8',
+  fontSize: '40',
 };
 
 Main.propTypes = {

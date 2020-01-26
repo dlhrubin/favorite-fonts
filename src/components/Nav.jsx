@@ -39,7 +39,7 @@ function Nav(props) {
 Nav.defaultProps = {
   query: '',
   example: '',
-  fontSize: '8',
+  fontSize: '40',
   changeSearch: () => {},
   deleteQuery: () => {},
   changeExample: () => {},

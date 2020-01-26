@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const DEFAULT_TEXT = 'Then came the night of the first falling star.';
+
 class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayed: 'Then came the night of the first falling star.',
-      boxHeight: "",
-      lineHeight: "",
-      entered: false,
-      backspaced: false
+      displayed: DEFAULT_TEXT,
     };
-    this.sizeSetter = React.createRef();
-    this.textArea = React.createRef();
+
   }
-  
-  // Fetch height of shadow textarea element and set as textarea's height
-  componentDidMount() {
-    const sizeSetter = this.sizeSetter.current;
-    this.setState({
-      boxHeight: sizeSetter.clientHeight,
-      lineHeight: sizeSetter.clientHeight
-    });
-  }
+
 
   // If user has typed in the "Type something box", display this text on the card
   componentDidUpdate(prevProps) {
@@ -30,47 +19,19 @@ class Card extends Component {
       const { text } = this.props;
       const innerTrimmed = text.split(/\s+/).join(' ');
       this.setState({
-        displayed: innerTrimmed,
+        displayed: innerTrimmed || DEFAULT_TEXT,
       });
     }
-  }
 
-  // If user has typed into the card's text box, display this text and auto-resize text box
-  handleChange = (e) => {
-    const sizeSetter = this.sizeSetter.current;
-    const textBox = this.textArea.current;
-    const {boxHeight, lineHeight, entered, backspaced} = this.state;
-    this.setState({
-      displayed: e.target.value,
-      boxHeight: !e.target.value ? lineHeight :
-                 entered ? boxHeight + lineHeight : 
-                 backspaced ? Math.min(sizeSetter.clientHeight, textBox.scrollHeight) :
-                 Math.max(sizeSetter.clientHeight, textBox.scrollHeight),
-      entered: false,
-      backspaced: false
-    });
-  }
-
-  // Add new line to text box on enter and delete line(s) on backspace
-  handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      this.setState({
-        entered: true
-      });
-    } else if (e.key === "Backspace") {
-      this.setState({
-        backspaced: true
-      })
-    }
   }
 
   render() {
     const {
-      name, styles,
+      name, size, styles,
     } = this.props;
-    const { displayed, boxHeight, lineHeight} = this.state;
+    const { displayed} = this.state;
     const textStyle = {
-      height: "" ? 'auto' : boxHeight + "px"
+      fontSize: size + "px"
     }
     return (
       <div className="card">
@@ -87,10 +48,7 @@ class Card extends Component {
             <span>+</span>
           </button>
         </div>
-        <div className="text-container">
-          <textarea value={displayed} style={textStyle} ref={this.textArea} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
-          <span className="size-setter" style={{minHeight: lineHeight + "px"}} ref={this.sizeSetter}>{displayed}</span>
-        </div>
+        <div className='text-container' contentEditable='true' suppressContentEditableWarning={true} style={textStyle} ref={this.textArea}>{displayed}</div>
       </div>
     );
   }
@@ -99,7 +57,7 @@ class Card extends Component {
 Card.defaultProps = {
   name: '',
   text: '',
-  size: '8',
+  size: '40',
   styles: [],
 };
 
