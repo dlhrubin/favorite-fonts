@@ -27,11 +27,12 @@ class Card extends Component {
 
   render() {
     const {
-      name, size, styles,
+      name, size, numStyles,
     } = this.props;
     const { displayed} = this.state;
     const textStyle = {
-      fontSize: size + "px"
+      fontSize: size + "px",
+      fontFamily: name + ', sans-serif'
     }
     return (
       <div className="card">
@@ -39,7 +40,7 @@ class Card extends Component {
           <div>
             <span className="font-name">{name}</span>
             <span className="num-styles">
-              {styles.length}
+              {numStyles}
               {' '}
   styles
             </span>
@@ -58,14 +59,14 @@ Card.defaultProps = {
   name: '',
   text: '',
   size: '40',
-  styles: [],
+  numStyles: 0,
 };
 
 Card.propTypes = {
   name: PropTypes.string,
   text: PropTypes.string,
   size: PropTypes.string,
-  styles: PropTypes.array,
+  numStyles: PropTypes.number,
 };
 
 export default Card;

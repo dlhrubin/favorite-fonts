@@ -17,6 +17,16 @@ class Main extends Component {
   componentDidMount() {
     return axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?key=${config.KEY}&sort=popularity`)
       .then((res) => {
+        // Import fonts into index.html
+        res.data.items.forEach((font) => {
+          const formattedName = font.family.replace(/\s+/g, '+')
+          const defaultVariant = (font.variants.includes("regular")) ? "" : ":" + font.variants[0];
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = "https://fonts.googleapis.com/css?family=" + formattedName + defaultVariant + "&display=swap";
+          document.head.appendChild(link);
+        })
+        // Store font information
         this.setState({
           fonts: res.data.items,
         });
@@ -29,7 +39,7 @@ class Main extends Component {
   render() {
     const { fonts } = this.state;
     const { example, fontSize } = this.props;
-    const fontCards = fonts.map((font) => <Card key={font.family} name={font.family} text={example} size={fontSize} styles={font.variants} />);
+    const fontCards = fonts.map((font) => <Card key={font.family.replace(/\s+/g, '-').toLowerCase()} name={font.family} text={example} size={fontSize} numStyles={font.variants.length}/>);
     return (
       <main>
         <p>
