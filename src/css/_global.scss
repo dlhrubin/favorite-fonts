@@ -5,6 +5,7 @@ $bright-accent: #ff5252;
 $pale-accent: rgba(255, 82, 82, 0.16);
 
 :export { 
+    lighterGray: $lighter-gray;
     brightAccent: $bright-accent;
     paleAccent: $pale-accent; 
 }
