@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import axios from 'axios';
 import Main from '../Main';
 import Card from '../Card';
@@ -8,8 +8,8 @@ import config from '../../config';
 
 // Make mock API call
 jest.mock('axios', () => {
-  const response = require('../__fixtures__/response');
-  return { get: jest.fn(() => Promise.resolve(response.default)) };
+  const res = require('../__fixtures__/response');
+  return { get: jest.fn(() => Promise.resolve(res.default)) };
 });
 
 describe('Main component', () => {

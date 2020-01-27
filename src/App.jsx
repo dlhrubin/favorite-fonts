@@ -8,7 +8,6 @@ const DEFAULTS = {
   search: '',
   exampleText: '',
   fontSize: '40',
-  navTop: 0,
   navFull: false,
 };
 
@@ -26,7 +25,7 @@ class App extends Component {
     window.addEventListener('scroll', this.handleScroll);
     this.setState({
       navTop: this.majorNav.current.getBoundingClientRect().top,
-      navFull: false
+      navFull: false,
     });
   }
 
@@ -95,6 +94,7 @@ class App extends Component {
 
   // Reset to display all font cards sorted by popularity with default example text
   handleReset = () => {
+    window.scrollTo(0, 0);
     this.setState(DEFAULTS);
   }
 
@@ -132,7 +132,7 @@ class App extends Component {
           example={exampleText.trim()}
           fontSize={fontSize}
         />
-        <button className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden' }}>
+        <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden' }}>
           <i className="fas fa-arrow-up" />
         </button>
         <footer>

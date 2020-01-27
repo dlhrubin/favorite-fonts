@@ -44,29 +44,36 @@ class Main extends Component {
     const { rendering, fonts } = this.state;
     const { query, example, fontSize } = this.props;
     // Filter font list based on search query
-    const fontCards = fonts
-      .filter((font) => font.family.toLowerCase().includes(query))
-      .map((font) => {
-        const fontKey = font.family.replace(/\s+/g, '-').toLowerCase();
-        // Lazy load font cards to boost performance
-        return (
-          <LazyLoad key={fontKey} placeholder={<div />}>
-            <Card key={fontKey} name={font.family} text={example} size={fontSize} numStyles={font.variants.length} />
-          </LazyLoad>
-        );
-      });
+    const filtered = fonts
+      .filter((font) => font.family.toLowerCase().includes(query.toLowerCase()));
+    const fontCards = filtered.map((font) => {
+      const fontKey = font.family.replace(/\s+/g, '-').toLowerCase();
+      const cardComponent = (
+        <Card
+          key={fontKey}
+          name={font.family}
+          text={example}
+          size={fontSize}
+          numStyles={font.variants.length}
+        />
+      );
+        // Lazy load font cards to boost performance when 30 or more cards are present
+      return (filtered.length <= 50) ? cardComponent
+        : <LazyLoad key={fontKey} placeholder={<div />}>{cardComponent}</LazyLoad>;
+    });
     // Display font cards or, if none match the search query, a "No results" page
-    const mainDisplay = rendering ? 
-      (<div className="loading-screen">
+    const mainDisplay = rendering
+      ? (
+        <div className="loading-screen">
           <p>Loading fonts...</p>
-          <i className="fas fa-spinner fa-pulse"></i>
+          <i className="fas fa-spinner fa-pulse" />
         </div>
       ) : fontCards.length ? fontCards : (
-      <div className="no-results">
-        <span>{'(>_<)'}</span>
-        <p>No fonts found!</p>
-      </div>
-    );
+        <div className="no-results">
+          <span>{'(>_<)'}</span>
+          <p>No fonts found!</p>
+        </div>
+      );
     return (
       <main>
         <p style={{ visibility: rendering ? 'hidden' : 'visible' }}>

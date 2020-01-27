@@ -11,8 +11,8 @@ nav {
     padding: 0 60px;
     ul {
         height: 44px;
-        width: 100%;
-        margin: 0;
+        max-width: 1450px;
+        margin: auto;
         justify-content: stretch;
         align-items: center;
         padding: 0;
@@ -22,8 +22,7 @@ nav {
     }
     li {
         height: 100%;
-        border-right: 1px solid lightgray;
-        display: flex;
+        display: none;
         align-items: center;
     }
     input[type="text"] {

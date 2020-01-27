@@ -7,7 +7,8 @@ import FontSize from './FontSize';
 // Implement major header
 function Nav(props) {
   const {
-    query, example, fontSize, navFull, changeSearch, deleteQuery, changeExample, changeFontSize, reset, majorNavRef,
+    query, example, fontSize, navFull, changeSearch, deleteQuery,
+    changeExample, changeFontSize, reset, majorNavRef,
   } = props;
   const navStyle = navFull ? {
     width: '100%', marginLeft: '0', marginRight: '0', padding: '0 60px', position: 'fixed', top: '0', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', boxShadow: '1px 1px 8px lightgray',
@@ -49,7 +50,6 @@ Nav.defaultProps = {
   changeExample: () => {},
   changeFontSize: () => {},
   reset: () => {},
-  majorNavRef: {},
 };
 
 // Define propTypes
@@ -63,7 +63,6 @@ Nav.propTypes = {
   changeExample: PropTypes.func,
   changeFontSize: PropTypes.func,
   reset: PropTypes.func,
-  majorNavRef: PropTypes.object,
 };
 
 export default Nav;

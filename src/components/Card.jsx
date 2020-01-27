@@ -11,23 +11,25 @@ class Card extends Component {
     };
   }
 
-  // If component is lazy-loaded and user has typed in the "Type something box", dislay this text instead of default
+  // If component is lazy-loaded and user has typed in the "Type something box",
+  // display this text instead of default
   componentDidMount() {
-    if (this.props.text !== DEFAULT_TEXT) {
-      this.updateText();
+    const { text } = this.props;
+    if (text !== DEFAULT_TEXT) {
+      this.updateText(text);
     }
   }
 
   // If user has typed in the "Type something box", display this text on the card
   componentDidUpdate(prevProps) {
-    if (this.props.text !== prevProps.text) {
-      this.updateText();
+    const { text } = this.props;
+    if (text !== prevProps.text) {
+      this.updateText(text);
     }
   }
 
   // Update displayed text
-  updateText = () => {
-    const { text } = this.props;
+  updateText = (text) => {
     const innerTrimmed = text.split(/\s+/).join(' ');
     this.setState({
       displayed: innerTrimmed || DEFAULT_TEXT,
@@ -54,7 +56,7 @@ class Card extends Component {
   styles
             </span>
           </div>
-          <button>
+          <button type="button">
             <span>+</span>
           </button>
         </div>

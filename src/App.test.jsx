@@ -103,7 +103,8 @@ describe('Font card', () => {
       checkCard(1);
     });
     it('should allow changes in "Type something" box to override edited text on all cards', () => {
-      // Text on cards should stay the same if the text in "Type something" box doesn't change on user input
+      // Text on cards should stay the same if the text in "Type something" box doesn't change on
+      // user input
       typeSomething('something typed');
       checkCard(0, 'edited');
       checkCard(1, 'something typed');
@@ -112,12 +113,14 @@ describe('Font card', () => {
       checkCard(0);
       checkCard(1);
     });
-    it('should register a change when user adds spaces within but not around input in "Type something" box', () => {
-      // Text on edited cards should not change when user adds spaces before or after "Type something" box input
+    it('should register change when user adds spaces within input in "Type something" box', () => {
+      // Text on edited cards should not change when user adds spaces before or after
+      // "Type something" box input
       editCard('edited again');
       typeSomething(' something different ');
       checkCard(0, 'edited again');
-      // Text on edited cards should change to trimmed "Type something" box input when user adds spaces within the input
+      // Text on edited cards should change to trimmed "Type something" box input when user adds
+      // spaces within the input
       typeSomething('something  different');
       checkCard(0, 'something different');
     });
