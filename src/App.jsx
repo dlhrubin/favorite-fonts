@@ -22,11 +22,12 @@ class App extends Component {
 
   // Add scroll event listener
   componentDidMount() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     window.addEventListener('scroll', this.handleScroll);
     this.setState({
-      navTop: this.majorNav.current.getBoundingClientRect().top
-    })
+      navTop: this.majorNav.current.getBoundingClientRect().top,
+      navFull: false
+    });
   }
 
   // Clean up event listeners
@@ -36,17 +37,16 @@ class App extends Component {
 
   // Change major nav appearance and scroll to top button visbility on scroll
   handleScroll = (e) => {
-    //console.log(this.majorNav.current.getBoundingClientRect().top)
     const { navTop } = this.state;
     const scrollTop = (e.target.documentElement.scrollTop || e.target.body.scrollTop);
     if (scrollTop >= navTop) {
       this.setState({
         navFull: true,
-      })
+      });
     } else {
       this.setState({
         navFull: false,
-      })
+      });
     }
   }
 
@@ -57,7 +57,7 @@ class App extends Component {
       const { search } = this.state;
       // Scroll to top if input has changed (including whitespace)
       if (input.trim() !== search.trim()) {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
       }
       // Update state only if user input is different from previous input
       if (input !== search) {
@@ -100,43 +100,53 @@ class App extends Component {
 
   // Scroll to top of page
   handleToTop = () => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   render() {
-    const { search, exampleText, fontSize, navFull } = this.state;
+    const {
+      search, exampleText, fontSize, navFull,
+    } = this.state;
     return (
-      <React.StrictMode>
-        <div className="app">
-          <header>
-            <Header />
-            <div className="nav-container">
-              <Nav
-                query={search}
-                example={exampleText}
-                fontSize={fontSize}
-                navFull={navFull}
-                changeSearch={this.handleChangeSearch}
-                deleteQuery={this.handleDelete}
-                changeExample={this.handleChangeExample}
-                changeFontSize={this.handleChangeFontSize}
-                reset={this.handleReset}
-                majorNavRef={this.majorNav}
-              />
-              <div className="nav-placeholder" style={{position: navFull ? "relative" : ""}}></div>
-            </div>
-          </header>
-          <Main
-            query={search.trim()}
-            example={exampleText.trim()}
-            fontSize={fontSize}
-          />
-          <button className="to-top" onClick={this.handleToTop} style={{"visibility": navFull ? "visible" : "hidden"}}>
-            <i className="fas fa-arrow-up"></i>
-          </button>
-          <footer>Coded by Danielle Rubin <span style={{color: "black"}}>|</span> 2020 <span style={{color: "black"}}>|</span> Chingu Pre-Work Project</footer>
-        </div>
-      </React.StrictMode>
+      <div className="app">
+        <header>
+          <Header />
+          <div className="nav-container">
+            <Nav
+              query={search}
+              example={exampleText}
+              fontSize={fontSize}
+              navFull={navFull}
+              changeSearch={this.handleChangeSearch}
+              deleteQuery={this.handleDelete}
+              changeExample={this.handleChangeExample}
+              changeFontSize={this.handleChangeFontSize}
+              reset={this.handleReset}
+              majorNavRef={this.majorNav}
+            />
+            <div className="nav-placeholder" style={{ position: navFull ? 'relative' : '' }} />
+          </div>
+        </header>
+        <Main
+          query={search.trim()}
+          example={exampleText.trim()}
+          fontSize={fontSize}
+        />
+        <button className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden' }}>
+          <i className="fas fa-arrow-up" />
+        </button>
+        <footer>
+Coded by Danielle Rubin
+          {' '}
+          <span style={{ color: 'black' }}>|</span>
+          {' '}
+2020
+          {' '}
+          <span style={{ color: 'black' }}>|</span>
+          {' '}
+Chingu Pre-Work Project
+        </footer>
+      </div>
     );
   }
 }

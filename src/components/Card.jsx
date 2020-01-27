@@ -9,30 +9,40 @@ class Card extends Component {
     this.state = {
       displayed: DEFAULT_TEXT,
     };
-
   }
 
+  // If component is lazy-loaded and user has typed in the "Type something box", dislay this text instead of default
+  componentDidMount() {
+    if (this.props.text !== DEFAULT_TEXT) {
+      this.updateText();
+    }
+  }
 
   // If user has typed in the "Type something box", display this text on the card
   componentDidUpdate(prevProps) {
     if (this.props.text !== prevProps.text) {
-      const { text } = this.props;
-      const innerTrimmed = text.split(/\s+/).join(' ');
-      this.setState({
-        displayed: innerTrimmed || DEFAULT_TEXT,
-      });
+      this.updateText();
     }
+  }
+
+  // Update displayed text
+  updateText = () => {
+    const { text } = this.props;
+    const innerTrimmed = text.split(/\s+/).join(' ');
+    this.setState({
+      displayed: innerTrimmed || DEFAULT_TEXT,
+    });
   }
 
   render() {
     const {
       name, size, numStyles,
     } = this.props;
-    const { displayed} = this.state;
+    const { displayed } = this.state;
     const textStyle = {
-      fontSize: size + "px",
-      fontFamily: name + ', sans-serif'
-    }
+      fontSize: `${size}px`,
+      fontFamily: `${name}, sans-serif`,
+    };
     return (
       <div className="card">
         <div className="card-header">
@@ -48,7 +58,7 @@ class Card extends Component {
             <span>+</span>
           </button>
         </div>
-        <div className='text-container' contentEditable='true' suppressContentEditableWarning={true} style={textStyle} ref={this.textArea}>{displayed}</div>
+        <div className="text-container" contentEditable="true" suppressContentEditableWarning style={textStyle} ref={this.textArea}>{displayed}</div>
       </div>
     );
   }

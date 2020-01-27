@@ -7,12 +7,14 @@ import FontSize from './FontSize';
 // Implement major header
 function Nav(props) {
   const {
-    query, example, fontSize, navFull, changeSearch, deleteQuery, changeExample, changeFontSize, reset, majorNavRef
+    query, example, fontSize, navFull, changeSearch, deleteQuery, changeExample, changeFontSize, reset, majorNavRef,
   } = props;
-  const navStyle = navFull ? {width: "100%", marginLeft: "0", marginRight: "0", padding: "0 60px", position: "fixed", top: "0", borderTop: "1px solid lightgray", borderBottom: "1px solid lightgray", boxShadow: "1px 1px 8px lightgray"} : {};
+  const navStyle = navFull ? {
+    width: '100%', marginLeft: '0', marginRight: '0', padding: '0 60px', position: 'fixed', top: '0', borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', boxShadow: '1px 1px 8px lightgray',
+  } : {};
   return (
     <nav ref={majorNavRef} style={navStyle}>
-      <ul style={{border: navFull ? "none" : ""}}>
+      <ul style={{ border: navFull ? 'none' : '' }}>
         <Search query={query} handleDelete={deleteQuery} handleChange={changeSearch} />
         <Example example={example} handleChange={changeExample} />
         <FontSize fontSize={fontSize} handleChange={changeFontSize} />
