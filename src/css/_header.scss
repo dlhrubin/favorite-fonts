@@ -1,14 +1,10 @@
-//@font-face {
-    //font-family: "Anonymous Pro";
-    //src: url("http://themes.googleusercontent.com/static/fonts/anonymouspro/v3/Zhfjj_gat3waL4JSju74E-V_5zh5b-_HiooIRUBwn1A.ttf");
-//}
-
 .minor-nav {
     border-bottom: 1px solid lightgray;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 6px 58px;
+    margin-bottom: 17px;
     span {
         color: $medium-gray;
         font-size: 1.4em;

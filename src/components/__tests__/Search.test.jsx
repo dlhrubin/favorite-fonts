@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Nav from './Nav';
+import Search from '../Search';
 
-describe('Nav component', () => {
+describe('Search component', () => {
   it('renders without crashing', () => {
-    shallow(<Nav />);
+    shallow(<Search />);
   });
 });

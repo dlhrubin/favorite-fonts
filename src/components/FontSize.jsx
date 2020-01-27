@@ -67,7 +67,7 @@ class FontSize extends Component {
 
 // Set defaults
 FontSize.defaultProps = {
-  fontSize: '8',
+  fontSize: '40',
   handleChange: () => {},
 };
 

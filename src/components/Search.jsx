@@ -8,7 +8,7 @@ function Search(props) {
   return (
     <li className="search">
       <i className="fas fa-search" />
-      <input id="search" type="text" placeholder="Search fonts" value={query} onChange={handleChange} />
+      <input id="search" type="text" placeholder="Search fonts" autoComplete="off" value={query} onChange={handleChange} />
       <button id="reset-query" className="icon-btn" type="button" style={buttonStyle} onClick={handleDelete}>
         <i className="fas fa-times" />
       </button>

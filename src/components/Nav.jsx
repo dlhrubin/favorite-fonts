@@ -7,13 +7,14 @@ import FontSize from './FontSize';
 // Implement major header
 function Nav(props) {
   const {
-    query, fontSize, changeSearch, deleteQuery, changeExample, changeFontSize,
+    query, example, fontSize, navFull, changeSearch, deleteQuery, changeExample, changeFontSize, reset, majorNavRef
   } = props;
+  const navStyle = navFull ? {width: "100%", marginLeft: "0", marginRight: "0", padding: "0 60px", position: "fixed", top: "0", borderTop: "1px solid lightgray", borderBottom: "1px solid lightgray", boxShadow: "1px 1px 8px lightgray"} : {};
   return (
-    <nav>
-      <ul>
+    <nav ref={majorNavRef} style={navStyle}>
+      <ul style={{border: navFull ? "none" : ""}}>
         <Search query={query} handleDelete={deleteQuery} handleChange={changeSearch} />
-        <Example handleChange={changeExample} />
+        <Example example={example} handleChange={changeExample} />
         <FontSize fontSize={fontSize} handleChange={changeFontSize} />
         <li className="colorMode">
           <button className="icon-btn" type="button">
@@ -25,7 +26,7 @@ function Nav(props) {
             <i className="fas fa-list-alt" />
           </button>
         </li>
-        <li className="reset">
+        <li className="reset" onClick={reset}>
           <button className="icon-btn" type="button">
             <i className="fas fa-redo-alt" />
           </button>
@@ -38,21 +39,29 @@ function Nav(props) {
 // Set defaults
 Nav.defaultProps = {
   query: '',
-  fontSize: '8',
+  example: '',
+  fontSize: '40',
+  navFull: false,
   changeSearch: () => {},
   deleteQuery: () => {},
   changeExample: () => {},
   changeFontSize: () => {},
+  reset: () => {},
+  majorNavRef: {},
 };
 
 // Define propTypes
 Nav.propTypes = {
   query: PropTypes.string,
+  example: PropTypes.string,
   fontSize: PropTypes.string,
+  navFull: PropTypes.bool,
   changeSearch: PropTypes.func,
   deleteQuery: PropTypes.func,
   changeExample: PropTypes.func,
   changeFontSize: PropTypes.func,
+  reset: PropTypes.func,
+  majorNavRef: PropTypes.object,
 };
 
 export default Nav;

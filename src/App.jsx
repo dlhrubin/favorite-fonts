@@ -2,26 +2,63 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './components/Header';
 import Nav from './components/Nav';
+import Main from './components/Main';
+
+const DEFAULTS = {
+  search: '',
+  exampleText: '',
+  fontSize: '40',
+  navTop: 0,
+  navFull: false,
+};
 
 // Implement stateful App component
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: '',
-      exampleText: '',
-      fontSize: '8',
-    };
+    this.state = DEFAULTS;
+    this.majorNav = React.createRef();
   }
 
-    // Note to self: find way to consolidate search and example handle changes to make code more DRY
-    // Update search query when user types in search bar
+  // Add scroll event listener
+  componentDidMount() {
+    window.scrollTo(0,0);
+    window.addEventListener('scroll', this.handleScroll);
+    this.setState({
+      navTop: this.majorNav.current.getBoundingClientRect().top
+    })
+  }
+
+  // Clean up event listeners
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  // Change major nav appearance and scroll to top button visbility on scroll
+  handleScroll = (e) => {
+    //console.log(this.majorNav.current.getBoundingClientRect().top)
+    const { navTop } = this.state;
+    const scrollTop = (e.target.documentElement.scrollTop || e.target.body.scrollTop);
+    if (scrollTop >= navTop) {
+      this.setState({
+        navFull: true,
+      })
+    } else {
+      this.setState({
+        navFull: false,
+      })
+    }
+  }
+
+
+  // Update search query when user types in search bar
     handleChangeSearch = (e) => {
-      // Note: removing "trim()" here for now so that I can set the value of the search input to
-      // this state to allow for testing. May change later b/c causes a ton more state changes
-      // without trim()...
       const input = e.target.value;
       const { search } = this.state;
+      // Scroll to top if input has changed (including whitespace)
+      if (input.trim() !== search.trim()) {
+        window.scrollTo(0,0);
+      }
       // Update state only if user input is different from previous input
       if (input !== search) {
         this.setState({
@@ -39,7 +76,7 @@ class App extends Component {
 
   // Update example text when user types in "Type something" box
   handleChangeExample = (e) => {
-    const input = e.target.value.trim();
+    const input = e.target.value;
     const { exampleText } = this.state;
     // Update state only if user input is different from previous input
     if (input !== exampleText) {
@@ -56,22 +93,49 @@ class App extends Component {
     });
   }
 
+  // Reset to display all font cards sorted by popularity with default example text
+  handleReset = () => {
+    this.setState(DEFAULTS);
+  }
+
+  // Scroll to top of page
+  handleToTop = () => {
+    window.scrollTo(0,0);
+  }
+
   render() {
-    const { search, fontSize } = this.state;
+    const { search, exampleText, fontSize, navFull } = this.state;
     return (
-      <div className="App">
-        <header>
-          <Header />
-          <Nav
-            query={search}
+      <React.StrictMode>
+        <div className="App">
+          <header>
+            <Header />
+            <div className="nav-container">
+              <Nav
+                query={search}
+                example={exampleText}
+                fontSize={fontSize}
+                navFull={navFull}
+                changeSearch={this.handleChangeSearch}
+                deleteQuery={this.handleDelete}
+                changeExample={this.handleChangeExample}
+                changeFontSize={this.handleChangeFontSize}
+                reset={this.handleReset}
+                majorNavRef={this.majorNav}
+              />
+              <div className="nav-placeholder" style={{position: navFull ? "relative" : ""}}></div>
+            </div>
+          </header>
+          <Main
+            query={search.trim()}
+            example={exampleText.trim()}
             fontSize={fontSize}
-            changeSearch={this.handleChangeSearch}
-            deleteQuery={this.handleDelete}
-            changeExample={this.handleChangeExample}
-            changeFontSize={this.handleChangeFontSize}
           />
-        </header>
-      </div>
+          <button className="to-top" onClick={this.handleToTop} style={{"visibility": navFull ? "visible" : "hidden"}}>
+            <i className="fas fa-arrow-up"></i>
+          </button>
+        </div>
+      </React.StrictMode>
     );
   }
 }
