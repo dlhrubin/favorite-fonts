@@ -48,6 +48,7 @@ class Main extends Component {
         const fontKey = font.family.replace(/\s+/g, '-').toLowerCase();
         return <Card key={fontKey} name={font.family} text={example} size={fontSize} numStyles={font.variants.length}/>
       });
+    // Display font cards or, if none match the search query, a "No results" page 
     const mainDisplay = fontCards.length ? fontCards.slice(0, 60) : <div className="no-results"><span>{"(>_<)"}</span><p>No fonts found!</p></div>
     return (
       <main>

@@ -107,7 +107,7 @@ class App extends Component {
     const { search, exampleText, fontSize, navFull } = this.state;
     return (
       <React.StrictMode>
-        <div className="App">
+        <div className="app">
           <header>
             <Header />
             <div className="nav-container">
@@ -134,6 +134,7 @@ class App extends Component {
           <button className="to-top" onClick={this.handleToTop} style={{"visibility": navFull ? "visible" : "hidden"}}>
             <i className="fas fa-arrow-up"></i>
           </button>
+          <footer>Coded by Danielle Rubin <span style={{color: "black"}}>|</span> 2020 <span style={{color: "black"}}>|</span> Chingu Pre-Work Project</footer>
         </div>
       </React.StrictMode>
     );

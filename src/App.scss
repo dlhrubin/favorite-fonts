@@ -4,4 +4,12 @@
 @import "css/nav/_search";
 @import "css/nav/_example";
 @import "css/nav/_font-size";
-@import "css/_main"
+@import "css/_main";
+@import "css/_footer";
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
