@@ -8,7 +8,7 @@ Live link: https://dlhrubin.github.io/favorite-fonts/
 
 ## Features
 * Cards displaying 977 Google font families
-* Text on font cards in the corresponding font
+* Text on each font card in the corresponding font
 * Search bar to filter font cards displayed
 * "Type something" box to customize text displayed on cards
 * Font size dropdown and slider to change font size on cards
