@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/favorite-fonts/static/css/main.21e98255.chunk.css",
+    "main.js": "/favorite-fonts/static/js/main.75b825c1.chunk.js",
+    "main.js.map": "/favorite-fonts/static/js/main.75b825c1.chunk.js.map",
+    "runtime-main.js": "/favorite-fonts/static/js/runtime-main.9da38b7e.js",
+    "runtime-main.js.map": "/favorite-fonts/static/js/runtime-main.9da38b7e.js.map",
+    "static/js/2.84ce6a9d.chunk.js": "/favorite-fonts/static/js/2.84ce6a9d.chunk.js",
+    "static/js/2.84ce6a9d.chunk.js.map": "/favorite-fonts/static/js/2.84ce6a9d.chunk.js.map",
+    "index.html": "/favorite-fonts/index.html",
+    "precache-manifest.7bd65ea8620c4e789808a4345a11ec70.js": "/favorite-fonts/precache-manifest.7bd65ea8620c4e789808a4345a11ec70.js",
+    "service-worker.js": "/favorite-fonts/service-worker.js",
+    "static/css/main.21e98255.chunk.css.map": "/favorite-fonts/static/css/main.21e98255.chunk.css.map",
+    "static/js/2.84ce6a9d.chunk.js.LICENSE": "/favorite-fonts/static/js/2.84ce6a9d.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9da38b7e.js",
+    "static/js/2.84ce6a9d.chunk.js",
+    "static/css/main.21e98255.chunk.css",
+    "static/js/main.75b825c1.chunk.js"
+  ]
+}
