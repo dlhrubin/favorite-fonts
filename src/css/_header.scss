@@ -1,0 +1,31 @@
+.minor-nav {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 58px;
+    margin-bottom: 17px;
+    span {
+        color: $medium-gray;
+        font-size: 1.4em;
+        margin: 0 2px;
+    }
+    ul {
+        visibility: hidden;
+        padding-right: 3px;
+        margin: 14px 0 18px 0px;
+    }
+    li {
+        padding: 0px 10px;
+    }
+    button {
+        color: $medium-gray;
+        font-weight: 600; 
+        font-size: 0.79em;
+        border: none;
+        background-color: transparent;
+    }
+    button:focus {
+        color: $bright-accent;
+    }
+}

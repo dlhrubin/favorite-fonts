@@ -1,0 +1,13 @@
+.example {
+    flex-grow: 0.75;
+    input {
+        width: 100%;
+        padding: 3.2px 0;
+        margin: 0 15px;
+        border: none;
+        border-bottom: 1px solid lightgray;
+    }
+    input:focus {
+        border-bottom: 2px solid $bright-accent;
+    }
+}

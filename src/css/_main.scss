@@ -1,0 +1,128 @@
+main {
+    margin: 10px 60px;
+    flex-grow: 1;
+    p {
+        max-width: 1450px;
+        margin: 20px auto;
+        font-size: 0.8em;
+        color: $medium-gray;
+        span {
+            color: $bright-accent;
+        }
+    }
+}
+
+.font-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: 40px;
+    max-width: 1450px;
+    position: relative;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.card {
+    border-top: 1px solid rgb(155, 155, 155);
+    width: 100%;
+    min-height: 280px;
+    position: relative;
+    padding-bottom: 30px;
+    button {
+        position: relative;
+        border-radius: 50%;
+        background-color: $bright-accent;
+        border: none;
+        color: white;
+        padding: 2px;
+        width: 20px;
+        height: 20px;
+        font-size: 1.4em;
+        span {
+            position: absolute;
+            top: -3px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+.card-header {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.font-name {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+.num-styles {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: $medium-gray;
+    padding: 10px 0;
+}
+
+.text-container {
+    outline: none;
+}
+
+/* Loading screen */
+
+.loading-screen {
+    text-align: center;
+    margin-top: 100px;
+    p {
+        margin-top: 0;
+        font-size: 1.2em;
+    }
+    i {
+        color: $bright-accent;
+        font-size: 2em;
+    }
+}
+
+/* No results screen */
+
+.no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $lighter-gray;
+    font-family: "Consolas";
+    width: 100%;
+    span {
+        text-align: center;
+        font-size: 10em;
+        padding: 60px 0 35px 0;
+    }
+    p {
+        text-align: center;
+        font-size: 1em;
+    }
+}
+
+/* To top button */
+
+.to-top {
+    position: fixed;
+    right: 65px;
+    bottom: 65px;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: -0.5px 1.5px 5px $lighter-gray;
+    width:  55px;
+    height: 55px;
+    color: $medium-gray;
+    font-size: 1.3em;
+}
+
+.to-top:hover {
+    background-color: rgb(230,230,230);
+}
