@@ -2,6 +2,7 @@
   "name": "favorite-fonts",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://dlhrubin.github.io/favorite-fonts",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -23,7 +24,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --verbose",
     "lint": "eslint --ext .js --ext .jsx .",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,6 +49,7 @@
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.0",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "gh-pages": "^2.2.0"
   }
 }
