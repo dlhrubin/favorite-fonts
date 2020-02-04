@@ -1,9 +1,10 @@
 import React from 'react';
 
 // Implement minor header
-function Header() {
+function Header(props) {
+  const { darkMode } = props;
   return (
-    <div className="minor-nav">
+    <div className={"minor-nav".concat(darkMode ? " dm-white" : "")}>
       <div>
         <span style={{ fontWeight: 500, fontSize: '1.45em' }}>Google</span>
         <span>Fonts</span>

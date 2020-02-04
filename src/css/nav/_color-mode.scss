@@ -1,0 +1,43 @@
+.color-mode {
+    position: relative;
+    ul {
+        height: auto;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0.5px 2px $lighter-gray;
+        right: 0;
+        padding: 7px 5px;
+        li {
+            border: none;
+        }
+        button {
+            border: 1px solid $white-gray;
+            border-radius: 50%;
+            padding: 6px;
+            margin: 5px;
+        }
+    }
+}
+
+.fa-fill-drip {
+    border-bottom: 4px solid $lighter-gray;
+    padding-bottom: 3px;
+    width: 25px;
+    text-align: center;
+}
+
+.dm-white {
+    color: white;
+}
+
+.dm-white[type=text]::placeholder {
+    color: inherit;
+}
+
+.dm-white[type=text]:focus {
+    border-color: white;
+}
+
+.dm-white[type=button]:hover {
+    background-color: rgb(60,60,60);
+}

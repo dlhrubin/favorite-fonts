@@ -3,7 +3,6 @@
 }
 
 nav {
-    background-color: white;
     font-size: 0.95em;
     color: $medium-gray;
     z-index: 2;
@@ -31,6 +30,7 @@ nav {
         font-size: inherit;
         font-weight: 400;
         outline: none;
+        background-color: transparent;
     }
     input[type="text"]::placeholder {
         font-weight: 500;
@@ -43,6 +43,14 @@ nav {
     position: absolute;
     top: 0;
     z-index: -1;
+}
+
+.dropdown {
+    position: absolute;
+    top: 42px;
+    visibility: hidden;
+    background-color: white;
+    z-index: 1;
 }
 
 .icon-btn {
@@ -61,18 +69,9 @@ nav {
     background-color: $white-gray;
 }
 
-.colorMode, .view, .reset {
+.color-mode, .view, .reset {
     padding: 0px 4px;
     height: 80%;
-}
-
-.colorMode {
-    .fas {
-        border-bottom: 4px solid $lighter-gray;
-        padding-bottom: 3px;
-        width: 25px;
-        text-align: center;
-    }
 }
 
 .reset {
