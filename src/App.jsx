@@ -111,7 +111,8 @@ class App extends Component {
   handleToggleLayout = (e) => {
     const { grid } = this.state;
     this.setState({
-      grid: !grid
+      fontSize : grid ? '64' : '40',
+      grid: !grid,
     })
   }
 
