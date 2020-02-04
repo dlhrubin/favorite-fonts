@@ -42,7 +42,7 @@ class Main extends Component {
 
   render() {
     const { rendering, fonts } = this.state;
-    const { query, example, fontSize, darkMode } = this.props;
+    const { query, example, fontSize, darkMode, grid } = this.props;
     // Filter font list based on search query
     const filtered = fonts
       .filter((font) => font.family.toLowerCase().includes(query.toLowerCase()));
@@ -88,7 +88,7 @@ of
           {' '}
 font families
         </p>
-        <div className="font-grid">
+        <div className={"font-grid ".concat(grid ? "grid" : "list")}>
           {mainDisplay}
         </div>
       </main>

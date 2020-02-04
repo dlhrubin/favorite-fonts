@@ -3,13 +3,13 @@ import './App.scss';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
-import styles from './css/_global.scss';
 
 const DEFAULTS = {
   search: '',
   exampleText: '',
   fontSize: '40',
   darkMode: false,
+  grid: true,
   navFull: false,
 };
 
@@ -96,14 +96,29 @@ class App extends Component {
 
   // Toggle between dark and light mode
   handleChangeMode = (e, mode) => {
+    // Change background color of body on toggle
+    if (mode === 'dark') {
+      document.body.classList.add("dm-dark");
+    } else {
+      document.body.classList.remove('dm-dark');
+    }
     this.setState({
       darkMode: (mode === 'dark') ? true : false
+    })
+  }
+
+  // Toggle between grid and list layout
+  handleToggleLayout = (e) => {
+    const { grid } = this.state;
+    this.setState({
+      grid: !grid
     })
   }
 
   // Reset to display all font cards sorted by popularity with default example text
   handleReset = () => {
     window.scrollTo(0, 0);
+    document.body.classList.remove('dm-dark');
     this.setState(DEFAULTS);
   }
 
@@ -114,10 +129,10 @@ class App extends Component {
 
   render() {
     const {
-      search, exampleText, fontSize, darkMode, navFull,
+      search, exampleText, fontSize, darkMode, grid, navFull,
     } = this.state;
     return (
-      <div className="app" style={{color: darkMode ? "white": "", backgroundColor: darkMode ? styles.dark : ""}}>
+      <div className="app" style={{color: darkMode ? "white": ""}}>
         <header>
           <Header darkMode={darkMode}/>
           <div className="nav-container">
@@ -126,11 +141,13 @@ class App extends Component {
               example={exampleText}
               fontSize={fontSize}
               darkMode={darkMode}
+              grid={grid}
               navFull={navFull}
               changeSearch={this.handleChangeSearch}
               deleteQuery={this.handleDelete}
               changeExample={this.handleChangeExample}
               changeFontSize={this.handleChangeFontSize}
+              toggleLayout={this.handleToggleLayout}
               changeMode={this.handleChangeMode}
               reset={this.handleReset}
               majorNavRef={this.majorNav}
@@ -143,6 +160,7 @@ class App extends Component {
           example={exampleText.trim()}
           fontSize={fontSize}
           darkMode={darkMode}
+          grid={grid}
         />
         <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden',  boxShadow: darkMode ? "none" : ""}}>
           <i className="fas fa-arrow-up" />
