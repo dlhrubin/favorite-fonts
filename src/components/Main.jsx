@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import axios from 'axios';
-import config from '../config';
+import config from '../testConfig';
 import Card from './Card';
 
 // Implement stateful App component
@@ -42,7 +42,7 @@ class Main extends Component {
 
   render() {
     const { rendering, fonts } = this.state;
-    const { query, example, fontSize } = this.props;
+    const { query, example, fontSize, darkMode } = this.props;
     // Filter font list based on search query
     const filtered = fonts
       .filter((font) => font.family.toLowerCase().includes(query.toLowerCase()));
@@ -54,6 +54,7 @@ class Main extends Component {
           name={font.family}
           text={example}
           size={fontSize}
+          darkMode={darkMode}
           numStyles={font.variants.length}
         />
       );
@@ -76,10 +77,10 @@ class Main extends Component {
       );
     return (
       <main>
-        <p style={{ visibility: rendering ? 'hidden' : 'visible' }}>
+        <p className={darkMode ? "dm-white" : ""} style={{ visibility: rendering ? 'hidden' : 'visible' }}>
 Viewing
           {' '}
-          <span>{fontCards.length}</span>
+          <span className={darkMode ? "dm-white" : ""}>{fontCards.length}</span>
           {' '}
 of
           {' '}

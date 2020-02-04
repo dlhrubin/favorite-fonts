@@ -23,7 +23,9 @@
         border: none;
         color: black;
     }
-
+    .dm-white {
+        color: white;
+    }
     span {
         margin-right: 8px;
     }
@@ -65,11 +67,6 @@
     box-shadow: -0.5px 1.5px 5px $lighter-gray;
     width: 100%;
     overflow: hidden;
-    position: absolute;
-    top: 42px;
-    visibility: hidden;
-    background-color: white;
-    z-index: 1;
 }
 
 .size-options {

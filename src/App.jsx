@@ -3,11 +3,13 @@ import './App.scss';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Main from './components/Main';
+import styles from './css/_global.scss';
 
 const DEFAULTS = {
   search: '',
   exampleText: '',
   fontSize: '40',
+  darkMode: false,
   navFull: false,
 };
 
@@ -92,6 +94,13 @@ class App extends Component {
     });
   }
 
+  // Toggle between dark and light mode
+  handleChangeMode = (e, mode) => {
+    this.setState({
+      darkMode: (mode === 'dark') ? true : false
+    })
+  }
+
   // Reset to display all font cards sorted by popularity with default example text
   handleReset = () => {
     window.scrollTo(0, 0);
@@ -105,22 +114,24 @@ class App extends Component {
 
   render() {
     const {
-      search, exampleText, fontSize, navFull,
+      search, exampleText, fontSize, darkMode, navFull,
     } = this.state;
     return (
-      <div className="app">
+      <div className="app" style={{color: darkMode ? "white": "", backgroundColor: darkMode ? styles.dark : ""}}>
         <header>
-          <Header />
+          <Header darkMode={darkMode}/>
           <div className="nav-container">
             <Nav
               query={search}
               example={exampleText}
               fontSize={fontSize}
+              darkMode={darkMode}
               navFull={navFull}
               changeSearch={this.handleChangeSearch}
               deleteQuery={this.handleDelete}
               changeExample={this.handleChangeExample}
               changeFontSize={this.handleChangeFontSize}
+              changeMode={this.handleChangeMode}
               reset={this.handleReset}
               majorNavRef={this.majorNav}
             />
@@ -131,8 +142,9 @@ class App extends Component {
           query={search.trim()}
           example={exampleText.trim()}
           fontSize={fontSize}
+          darkMode={darkMode}
         />
-        <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden' }}>
+        <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden',  boxShadow: darkMode ? "none" : ""}}>
           <i className="fas fa-arrow-up" />
         </button>
         <footer>

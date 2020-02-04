@@ -1,3 +1,4 @@
+$dark: rgb(34, 34, 34);
 $medium-gray: rgb(105, 105, 105);
 $lighter-gray: rgb(184, 184, 184);
 $white-gray: rgb(240, 240, 240);
@@ -5,6 +6,7 @@ $bright-accent: #ff5252;
 $pale-accent: rgba(255, 82, 82, 0.16);
 
 :export { 
+    dark: $dark;
     lighterGray: $lighter-gray;
     brightAccent: $bright-accent;
     paleAccent: $pale-accent; 
@@ -31,4 +33,9 @@ li {
 
 .fa-caret-down {
     color: $bright-accent;
+}
+
+.icon-circle {
+    color: $bright-accent;
+    font-size: 1.5em;
 }

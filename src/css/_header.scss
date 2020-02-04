@@ -5,8 +5,8 @@
     align-items: center;
     padding: 6px 58px;
     margin-bottom: 17px;
+    color: $medium-gray;
     span {
-        color: $medium-gray;
         font-size: 1.4em;
         margin: 0 2px;
     }
@@ -19,7 +19,7 @@
         padding: 0px 10px;
     }
     button {
-        color: $medium-gray;
+        color: inherit;
         font-weight: 600; 
         font-size: 0.79em;
         border: none;

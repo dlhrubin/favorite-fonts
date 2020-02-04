@@ -31,20 +31,10 @@ main {
     button {
         position: relative;
         border-radius: 50%;
-        background-color: $bright-accent;
         border: none;
-        color: white;
-        padding: 2px;
-        width: 20px;
-        height: 20px;
-        font-size: 1.4em;
-        span {
-            position: absolute;
-            top: -3px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
+        background-color: transparent;
+        padding: 0;
+        height: fit-content;
     }
 }
 
