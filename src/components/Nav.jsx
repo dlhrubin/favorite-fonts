@@ -9,8 +9,8 @@ import styles from '../css/_global.scss';
 // Implement major header
 function Nav(props) {
   const {
-    query, example, fontSize, darkMode, navFull, changeSearch, deleteQuery,
-    changeExample, changeFontSize, changeMode, reset, majorNavRef,
+    query, example, fontSize, darkMode, grid, navFull, changeSearch, deleteQuery,
+    changeExample, changeFontSize, changeMode, toggleLayout, reset, majorNavRef,
   } = props;
   const textColor = darkMode ? "white" : "";
   const navStyle = navFull ? {
@@ -23,9 +23,9 @@ function Nav(props) {
         <Example example={example} darkMode={darkMode} handleChange={changeExample} />
         <FontSize fontSize={fontSize} darkMode={darkMode} handleChange={changeFontSize} />
         <ColorMode darkMode={darkMode} handleChange={changeMode} />
-        <li className="view">
+        <li className="view" onClick={toggleLayout}>
           <button className={"icon-btn".concat(darkMode ? " dm-white" : "")} type="button">
-            <i className="fas fa-list-alt" />
+            <i className={"fas ".concat(grid ? "fa-list-alt" : "fa-th")} />
           </button>
         </li>
         <li className="reset" onClick={reset}>
