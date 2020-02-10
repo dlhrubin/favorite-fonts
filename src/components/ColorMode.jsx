@@ -29,27 +29,29 @@ class ColorMode extends Component {
     const { darkMode, handleChange } = this.props;
     const { showMenu } = this.state;
     const menuStyle = { visibility: showMenu ? 'visible' : 'hidden' };
-    const modes = [{name: "dark", color: styles.dark}, {name: "light", color: "rgb(255,255,255)"}];
+    const modes = [{ name: 'dark', color: styles.dark }, { name: 'light', color: 'rgb(255,255,255)' }];
     const options = modes.map((mode) => {
       const currentMode = darkMode ? 'dark' : 'light';
-      return (<li key={mode.name}>
-        <button
-          type="button"
-          onClick={(e) => { handleChange(e, mode.name); this.handleOptionClick(e); }}
-          style={{backgroundColor: mode.color}}
-        >
-          <i className="fas fa-check-circle icon-circle" style={{visibility: currentMode === mode.name && showMenu ? "visible" : "hidden"}}/>
-        </button>
-      </li>)
+      return (
+        <li key={mode.name}>
+          <button
+            type="button"
+            onClick={(e) => { handleChange(e, mode.name); this.handleOptionClick(e); }}
+            style={{ backgroundColor: mode.color }}
+          >
+            <i className="fas fa-check-circle icon-circle" style={{ visibility: currentMode === mode.name && showMenu ? 'visible' : 'hidden' }} />
+          </button>
+        </li>
+      );
     });
     return (
       <li className="color-mode">
-        <button className={"icon-btn".concat(darkMode ? " dm-white" : "")} id="colorMode" type="button" onClick={this.handleMenuClick}>
+        <button className={'icon-btn'.concat(darkMode ? ' dm-white' : '')} id="colorMode" type="button" onClick={this.handleMenuClick}>
           <i className="fas fa-fill-drip" />
         </button>
-          <ul className="dropdown" style={menuStyle}>
-            {options}
-          </ul>
+        <ul className="dropdown" style={menuStyle}>
+          {options}
+        </ul>
       </li>
     );
   }

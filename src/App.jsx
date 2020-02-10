@@ -18,17 +18,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = DEFAULTS;
-    this.majorNav = React.createRef();
   }
 
   // Add scroll event listener
   componentDidMount() {
     window.scrollTo(0, 0);
     window.addEventListener('scroll', this.handleScroll);
-    this.setState({
-      navTop: this.majorNav.current.getBoundingClientRect().top,
-      navFull: false,
-    });
   }
 
   // Clean up event listeners
@@ -51,6 +46,13 @@ class App extends Component {
     }
   }
 
+  // Set top of nav bar for scrolling effects
+  setNavTop = (top) => {
+    this.setState({
+      navTop: top,
+      navFull: false,
+    });
+  }
 
   // Update search query when user types in search bar
     handleChangeSearch = (e) => {
@@ -98,22 +100,22 @@ class App extends Component {
   handleChangeMode = (e, mode) => {
     // Change background color of body on toggle
     if (mode === 'dark') {
-      document.body.classList.add("dm-dark");
+      document.body.classList.add('dm-dark');
     } else {
       document.body.classList.remove('dm-dark');
     }
     this.setState({
-      darkMode: (mode === 'dark') ? true : false
-    })
+      darkMode: (mode === 'dark'),
+    });
   }
 
   // Toggle between grid and list layout
-  handleToggleLayout = (e) => {
+  handleToggleLayout = () => {
     const { grid } = this.state;
     this.setState({
-      fontSize : grid ? '64' : '40',
+      fontSize: grid ? '64' : '40',
       grid: !grid,
-    })
+    });
   }
 
   // Reset to display all font cards sorted by popularity with default example text
@@ -133,9 +135,9 @@ class App extends Component {
       search, exampleText, fontSize, darkMode, grid, navFull,
     } = this.state;
     return (
-      <div className="app" style={{color: darkMode ? "white": ""}}>
+      <div className="app" style={{ color: darkMode ? 'white' : '' }}>
         <header>
-          <Header darkMode={darkMode}/>
+          <Header darkMode={darkMode} />
           <div className="nav-container">
             <Nav
               query={search}
@@ -144,6 +146,7 @@ class App extends Component {
               darkMode={darkMode}
               grid={grid}
               navFull={navFull}
+              setNavTop={this.setNavTop}
               changeSearch={this.handleChangeSearch}
               deleteQuery={this.handleDelete}
               changeExample={this.handleChangeExample}
@@ -163,7 +166,7 @@ class App extends Component {
           darkMode={darkMode}
           grid={grid}
         />
-        <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden',  boxShadow: darkMode ? "none" : ""}}>
+        <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden', boxShadow: darkMode ? 'none' : '' }}>
           <i className="fas fa-arrow-up" />
         </button>
         <footer>

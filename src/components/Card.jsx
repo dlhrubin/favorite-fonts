@@ -39,7 +39,7 @@ class Card extends Component {
 
   render() {
     const {
-      name, size, darkMode, numStyles
+      name, size, darkMode, numStyles,
     } = this.props;
     const { displayed } = this.state;
     const textStyle = {
@@ -51,7 +51,7 @@ class Card extends Component {
         <div className="card-header">
           <div>
             <span className="font-name">{name}</span>
-            <span className="num-styles" style={{color: darkMode ? styles.lighterGray: ""}}>
+            <span className="num-styles" style={{ color: darkMode ? styles.lighterGray : '' }}>
               {numStyles}
               {' '}
   styles
@@ -71,6 +71,7 @@ Card.defaultProps = {
   name: '',
   text: '',
   size: '40',
+  darkMode: false,
   numStyles: 0,
 };
 
@@ -78,6 +79,7 @@ Card.propTypes = {
   name: PropTypes.string,
   text: PropTypes.string,
   size: PropTypes.string,
+  darkMode: PropTypes.bool,
   numStyles: PropTypes.number,
 };
 

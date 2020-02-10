@@ -35,14 +35,15 @@ class Main extends Component {
           fonts,
         });
       })
-      .catch((res) => {
-        console.log('Error: fonts not loaded');
+      .catch(() => {
       });
   }
 
   render() {
     const { rendering, fonts } = this.state;
-    const { query, example, fontSize, darkMode, grid } = this.props;
+    const {
+      query, example, fontSize, darkMode, grid,
+    } = this.props;
     // Filter font list based on search query
     const filtered = fonts
       .filter((font) => font.family.toLowerCase().includes(query.toLowerCase()));
@@ -77,10 +78,10 @@ class Main extends Component {
       );
     return (
       <main>
-        <p className={darkMode ? "dm-white" : ""} style={{ visibility: rendering ? 'hidden' : 'visible' }}>
+        <p className={darkMode ? 'dm-white' : ''} style={{ visibility: rendering ? 'hidden' : 'visible' }}>
 Viewing
           {' '}
-          <span className={darkMode ? "dm-white" : ""}>{fontCards.length}</span>
+          <span className={darkMode ? 'dm-white' : ''}>{fontCards.length}</span>
           {' '}
 of
           {' '}
@@ -88,7 +89,7 @@ of
           {' '}
 font families
         </p>
-        <div className={"font-grid ".concat(grid ? "grid" : "list")}>
+        <div className={'font-grid '.concat(grid ? 'grid' : 'list')}>
           {mainDisplay}
         </div>
       </main>
@@ -100,12 +101,16 @@ Main.defaultProps = {
   query: '',
   example: '',
   fontSize: '40',
+  darkMode: false,
+  grid: true,
 };
 
 Main.propTypes = {
   query: PropTypes.string,
   example: PropTypes.string,
   fontSize: PropTypes.string,
+  darkMode: PropTypes.bool,
+  grid: PropTypes.bool,
 };
 
 export default Main;
