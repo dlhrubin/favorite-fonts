@@ -1,8 +1,9 @@
 .search {
-    flex-grow: 0.75;
+    flex-grow: 1;
     position: relative;
     padding-left: 20px;
     display: flex;
+    border-right: 1px solid lightgray;
     .fa-search {
         margin-right: 10px;
         font-size: 1.1em;

@@ -55,27 +55,27 @@ class App extends Component {
   }
 
   // Update search query when user types in search bar
-    handleChangeSearch = (e) => {
-      const input = e.target.value;
-      const { search } = this.state;
-      // Scroll to top if input has changed (including whitespace)
-      if (input.trim() !== search.trim()) {
-        window.scrollTo(0, 0);
-      }
-      // Update state only if user input is different from previous input
-      if (input !== search) {
-        this.setState({
-          search: input,
-        });
-      }
+  handleChangeSearch = (e) => {
+    const input = e.target.value;
+    const { search } = this.state;
+    // Scroll to top if input has changed (including whitespace)
+    if (input.trim() !== search.trim()) {
+      window.scrollTo(0, 0);
     }
-
-    // Delete search query when user clicks delete button
-    handleDelete = () => {
+    // Update state only if user input is different from previous input
+    if (input !== search) {
       this.setState({
-        search: '',
+        search: input,
       });
     }
+  }
+
+  // Delete search query when user clicks delete button
+  handleDelete = () => {
+    this.setState({
+      search: '',
+    });
+  }
 
   // Update example text when user types in "Type something" box
   handleChangeExample = (e) => {
@@ -134,6 +134,10 @@ class App extends Component {
     const {
       search, exampleText, fontSize, darkMode, grid, navFull,
     } = this.state;
+    const defaultState = Object.keys(this.state)
+      .filter((key) => ((key === 'navTop') ? false : this.state[key] === DEFAULTS[key]))
+      .length === Object.keys(DEFAULTS).length;
+    const resetDisabled = !!defaultState;
     return (
       <div className="app" style={{ color: darkMode ? 'white' : '' }}>
         <header>
@@ -145,6 +149,7 @@ class App extends Component {
               fontSize={fontSize}
               darkMode={darkMode}
               grid={grid}
+              resetDisabled={resetDisabled}
               navFull={navFull}
               setNavTop={this.setNavTop}
               changeSearch={this.handleChangeSearch}

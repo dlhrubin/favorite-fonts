@@ -1,5 +1,5 @@
 main {
-    margin: 10px 60px;
+    margin: 10px 35px;
     flex-grow: 1;
     p {
         max-width: 1450px;
@@ -22,7 +22,7 @@ main {
 }
 
 .grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .list {
@@ -95,10 +95,11 @@ main {
     width: 100%;
     span {
         text-align: center;
-        font-size: 10em;
+        font-size: 4.5em;
         padding: 60px 0 35px 0;
     }
     p {
+        color: inherit;
         text-align: center;
         font-size: 1em;
     }

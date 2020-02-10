@@ -7,7 +7,7 @@ nav {
     color: $medium-gray;
     z-index: 2;
     box-sizing: border-box;
-    padding: 0 60px;
+    padding: 0 35px;
     ul {
         height: 44px;
         max-width: 1450px;
@@ -75,5 +75,11 @@ nav {
 }
 
 .reset {
+    display: flex;
     border: none;
+}
+
+.reset button:disabled {
+    color: lightgray;
+    cursor: auto;
 }

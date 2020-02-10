@@ -21,7 +21,7 @@ class Nav extends Component {
 
   render() {
     const {
-      query, example, fontSize, darkMode, grid, navFull, changeSearch, deleteQuery,
+      query, example, fontSize, darkMode, grid, resetDisabled, navFull, changeSearch, deleteQuery,
       changeExample, changeFontSize, changeMode, toggleLayout, reset,
     } = this.props;
     const textColor = darkMode ? 'white' : '';
@@ -46,7 +46,7 @@ class Nav extends Component {
             </button>
           </li>
           <li className="reset">
-            <button className={'icon-btn'.concat(darkMode ? ' dm-white' : '')} type="button" onClick={reset}>
+            <button className={'icon-btn'.concat(darkMode ? ' dm-white' : '')} type="button" onClick={reset} disabled={resetDisabled}>
               <i className="fas fa-redo-alt" />
             </button>
           </li>
@@ -64,6 +64,7 @@ Nav.defaultProps = {
   fontSize: '40',
   darkMode: false,
   grid: true,
+  resetDisabled: true,
   navFull: false,
   setNavTop: () => {},
   changeSearch: () => {},
@@ -82,6 +83,7 @@ Nav.propTypes = {
   fontSize: PropTypes.string,
   darkMode: PropTypes.bool,
   grid: PropTypes.bool,
+  resetDisabled: PropTypes.bool,
   navFull: PropTypes.bool,
   setNavTop: PropTypes.func,
   changeSearch: PropTypes.func,

@@ -71,7 +71,7 @@ class Main extends Component {
           <i className="fas fa-spinner fa-pulse" />
         </div>
       ) : fontCards.length ? fontCards : (
-        <div className="no-results">
+        <div className="no-results" style={{ color: darkMode ? 'white' : '' }}>
           <span>{'(>_<)'}</span>
           <p>No fonts found!</p>
         </div>
