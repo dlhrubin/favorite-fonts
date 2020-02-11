@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/favorite-fonts/static/css/main.099b4f1b.chunk.css",
-    "main.js": "/favorite-fonts/static/js/main.f6325f5c.chunk.js",
-    "main.js.map": "/favorite-fonts/static/js/main.f6325f5c.chunk.js.map",
+    "main.js": "/favorite-fonts/static/js/main.8dc88379.chunk.js",
+    "main.js.map": "/favorite-fonts/static/js/main.8dc88379.chunk.js.map",
     "runtime-main.js": "/favorite-fonts/static/js/runtime-main.9da38b7e.js",
     "runtime-main.js.map": "/favorite-fonts/static/js/runtime-main.9da38b7e.js.map",
     "static/js/2.a31a35c9.chunk.js": "/favorite-fonts/static/js/2.a31a35c9.chunk.js",
     "static/js/2.a31a35c9.chunk.js.map": "/favorite-fonts/static/js/2.a31a35c9.chunk.js.map",
     "index.html": "/favorite-fonts/index.html",
-    "precache-manifest.e5e3dedebbc1a6a64ea0a91fef35968d.js": "/favorite-fonts/precache-manifest.e5e3dedebbc1a6a64ea0a91fef35968d.js",
+    "precache-manifest.9f5c3976a44cce0c7bb56601b955c0cb.js": "/favorite-fonts/precache-manifest.9f5c3976a44cce0c7bb56601b955c0cb.js",
     "service-worker.js": "/favorite-fonts/service-worker.js",
     "static/css/main.099b4f1b.chunk.css.map": "/favorite-fonts/static/css/main.099b4f1b.chunk.css.map",
     "static/js/2.a31a35c9.chunk.js.LICENSE": "/favorite-fonts/static/js/2.a31a35c9.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.9da38b7e.js",
     "static/js/2.a31a35c9.chunk.js",
     "static/css/main.099b4f1b.chunk.css",
-    "static/js/main.f6325f5c.chunk.js"
+    "static/js/main.8dc88379.chunk.js"
   ]
 }
