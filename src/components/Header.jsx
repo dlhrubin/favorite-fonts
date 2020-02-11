@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Implement minor header
-function Header() {
+function Header(props) {
+  const { darkMode } = props;
   return (
-    <div className="minor-nav">
+    <div className={'minor-nav'.concat(darkMode ? ' dm-white' : '')}>
       <div>
         <span style={{ fontWeight: 500, fontSize: '1.45em' }}>Google</span>
         <span>Fonts</span>
@@ -25,5 +27,13 @@ function Header() {
     </div>
   );
 }
+
+Header.defaultProps = {
+  darkMode: false,
+};
+
+Header.propTypes = {
+  darkMode: PropTypes.bool,
+};
 
 export default Header;

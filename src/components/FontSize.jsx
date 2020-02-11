@@ -26,9 +26,9 @@ class FontSize extends Component {
   }
 
   render() {
-    const { fontSize, handleChange } = this.props;
+    const { fontSize, darkMode, handleChange } = this.props;
     const { showMenu } = this.state;
-    const menuStyle = { visibility: showMenu ? 'visible' : 'hidden' };
+    const menuStyle = { visibility: showMenu ? 'visible' : 'hidden', boxShadow: darkMode ? 'none' : '' };
     const caratStyle = { transform: showMenu ? 'rotate(180deg)' : '' };
     const menuButtonStyle = (cond) => ({
       backgroundColor: cond ? styles.paleAccent : '',
@@ -49,11 +49,11 @@ class FontSize extends Component {
     return (
       <li className="font-size">
         <div>
-          <button id="fontSize" type="button" style={menuButtonStyle(showMenu)} onClick={this.handleMenuClick}>
+          <button id="fontSize" className={darkMode ? ' dm-white' : ''} type="button" style={menuButtonStyle(showMenu)} onClick={this.handleMenuClick}>
             <span id="currentSize" style={{ fontWeight: 600 }}>{`${fontSize}px`}</span>
             <i className="fas fa-caret-down" style={caratStyle} />
           </button>
-          <div id="sizeMenu" className="options-container" style={menuStyle}>
+          <div id="sizeMenu" className="options-container dropdown" style={menuStyle}>
             <ul className="size-options">
               {options}
             </ul>
@@ -68,12 +68,14 @@ class FontSize extends Component {
 // Set defaults
 FontSize.defaultProps = {
   fontSize: '40',
+  darkMode: false,
   handleChange: () => {},
 };
 
 // Define propTypes
 FontSize.propTypes = {
   fontSize: PropTypes.string,
+  darkMode: PropTypes.bool,
   handleChange: PropTypes.func,
 };
 

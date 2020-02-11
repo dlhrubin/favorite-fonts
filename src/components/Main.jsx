@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import axios from 'axios';
-import config from '../config';
+import config from '../testConfig';
 import Card from './Card';
 
 // Implement stateful App component
@@ -35,14 +35,15 @@ class Main extends Component {
           fonts,
         });
       })
-      .catch((res) => {
-        console.log('Error: fonts not loaded');
+      .catch(() => {
       });
   }
 
   render() {
     const { rendering, fonts } = this.state;
-    const { query, example, fontSize } = this.props;
+    const {
+      query, example, fontSize, darkMode, grid,
+    } = this.props;
     // Filter font list based on search query
     const filtered = fonts
       .filter((font) => font.family.toLowerCase().includes(query.toLowerCase()));
@@ -54,6 +55,7 @@ class Main extends Component {
           name={font.family}
           text={example}
           size={fontSize}
+          darkMode={darkMode}
           numStyles={font.variants.length}
         />
       );
@@ -69,17 +71,17 @@ class Main extends Component {
           <i className="fas fa-spinner fa-pulse" />
         </div>
       ) : fontCards.length ? fontCards : (
-        <div className="no-results">
+        <div className="no-results" style={{ color: darkMode ? 'white' : '' }}>
           <span>{'(>_<)'}</span>
           <p>No fonts found!</p>
         </div>
       );
     return (
       <main>
-        <p style={{ visibility: rendering ? 'hidden' : 'visible' }}>
+        <p className={darkMode ? 'dm-white' : ''} style={{ visibility: rendering ? 'hidden' : 'visible' }}>
 Viewing
           {' '}
-          <span>{fontCards.length}</span>
+          <span className={darkMode ? 'dm-white' : ''}>{fontCards.length}</span>
           {' '}
 of
           {' '}
@@ -87,7 +89,7 @@ of
           {' '}
 font families
         </p>
-        <div className="font-grid">
+        <div className={'font-grid '.concat(grid ? 'grid' : 'list')}>
           {mainDisplay}
         </div>
       </main>
@@ -99,12 +101,16 @@ Main.defaultProps = {
   query: '',
   example: '',
   fontSize: '40',
+  darkMode: false,
+  grid: true,
 };
 
 Main.propTypes = {
   query: PropTypes.string,
   example: PropTypes.string,
   fontSize: PropTypes.string,
+  darkMode: PropTypes.bool,
+  grid: PropTypes.bool,
 };
 
 export default Main;

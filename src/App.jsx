@@ -8,6 +8,8 @@ const DEFAULTS = {
   search: '',
   exampleText: '',
   fontSize: '40',
+  darkMode: false,
+  grid: true,
   navFull: false,
 };
 
@@ -16,17 +18,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = DEFAULTS;
-    this.majorNav = React.createRef();
   }
 
   // Add scroll event listener
   componentDidMount() {
     window.scrollTo(0, 0);
     window.addEventListener('scroll', this.handleScroll);
-    this.setState({
-      navTop: this.majorNav.current.getBoundingClientRect().top,
-      navFull: false,
-    });
   }
 
   // Clean up event listeners
@@ -49,29 +46,36 @@ class App extends Component {
     }
   }
 
+  // Set top of nav bar for scrolling effects
+  setNavTop = (top) => {
+    this.setState({
+      navTop: top,
+      navFull: false,
+    });
+  }
 
   // Update search query when user types in search bar
-    handleChangeSearch = (e) => {
-      const input = e.target.value;
-      const { search } = this.state;
-      // Scroll to top if input has changed (including whitespace)
-      if (input.trim() !== search.trim()) {
-        window.scrollTo(0, 0);
-      }
-      // Update state only if user input is different from previous input
-      if (input !== search) {
-        this.setState({
-          search: input,
-        });
-      }
+  handleChangeSearch = (e) => {
+    const input = e.target.value;
+    const { search } = this.state;
+    // Scroll to top if input has changed (including whitespace)
+    if (input.trim() !== search.trim()) {
+      window.scrollTo(0, 0);
     }
-
-    // Delete search query when user clicks delete button
-    handleDelete = () => {
+    // Update state only if user input is different from previous input
+    if (input !== search) {
       this.setState({
-        search: '',
+        search: input,
       });
     }
+  }
+
+  // Delete search query when user clicks delete button
+  handleDelete = () => {
+    this.setState({
+      search: '',
+    });
+  }
 
   // Update example text when user types in "Type something" box
   handleChangeExample = (e) => {
@@ -92,9 +96,32 @@ class App extends Component {
     });
   }
 
+  // Toggle between dark and light mode
+  handleChangeMode = (e, mode) => {
+    // Change background color of body on toggle
+    if (mode === 'dark') {
+      document.body.classList.add('dm-dark');
+    } else {
+      document.body.classList.remove('dm-dark');
+    }
+    this.setState({
+      darkMode: (mode === 'dark'),
+    });
+  }
+
+  // Toggle between grid and list layout
+  handleToggleLayout = () => {
+    const { grid } = this.state;
+    this.setState({
+      fontSize: grid ? '64' : '40',
+      grid: !grid,
+    });
+  }
+
   // Reset to display all font cards sorted by popularity with default example text
   handleReset = () => {
     window.scrollTo(0, 0);
+    document.body.classList.remove('dm-dark');
     this.setState(DEFAULTS);
   }
 
@@ -105,22 +132,32 @@ class App extends Component {
 
   render() {
     const {
-      search, exampleText, fontSize, navFull,
+      search, exampleText, fontSize, darkMode, grid, navFull,
     } = this.state;
+    const defaultState = Object.keys(this.state)
+      .filter((key) => ((key === 'navTop') ? false : this.state[key] === DEFAULTS[key]))
+      .length === Object.keys(DEFAULTS).length;
+    const resetDisabled = !!defaultState;
     return (
-      <div className="app">
+      <div className="app" style={{ color: darkMode ? 'white' : '' }}>
         <header>
-          <Header />
+          <Header darkMode={darkMode} />
           <div className="nav-container">
             <Nav
               query={search}
               example={exampleText}
               fontSize={fontSize}
+              darkMode={darkMode}
+              grid={grid}
+              resetDisabled={resetDisabled}
               navFull={navFull}
+              setNavTop={this.setNavTop}
               changeSearch={this.handleChangeSearch}
               deleteQuery={this.handleDelete}
               changeExample={this.handleChangeExample}
               changeFontSize={this.handleChangeFontSize}
+              toggleLayout={this.handleToggleLayout}
+              changeMode={this.handleChangeMode}
               reset={this.handleReset}
               majorNavRef={this.majorNav}
             />
@@ -131,8 +168,10 @@ class App extends Component {
           query={search.trim()}
           example={exampleText.trim()}
           fontSize={fontSize}
+          darkMode={darkMode}
+          grid={grid}
         />
-        <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden' }}>
+        <button type="button" className="to-top" onClick={this.handleToTop} style={{ visibility: navFull ? 'visible' : 'hidden', boxShadow: darkMode ? 'none' : '' }}>
           <i className="fas fa-arrow-up" />
         </button>
         <footer>
