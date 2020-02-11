@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import axios from 'axios';
-import config from '../testConfig';
+import config from '../config';
 import Card from './Card';
 
 // Implement stateful App component
