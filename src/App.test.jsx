@@ -75,12 +75,12 @@ describe('Font card', () => {
       wrapper.update();
     }
     function editCard(text) {
-      wrapper.find(Card).at(0).find('textarea').simulate('change', { target: { value: text } });
+      wrapper.find(Card).at(0).find('#cardText').simulate('input', { key: text });
       wrapper.update();
     }
     // Check if text on card matches user input in "Type something" box
     function checkCard(ind, comparator = wrapper.find('#exampleBox').props().value) {
-      expect(wrapper.find(Card).at(ind).find('textarea').props().value).toEqual(comparator);
+      expect(wrapper.find(Card).at(ind).find('#cardText').text()).toEqual(comparator);
     }
     it('should display text that user types into "Type something" box', () => {
       typeSomething('change the text');

@@ -61,7 +61,7 @@ class Card extends Component {
             <i className="fas fa-plus-circle icon-circle" />
           </button>
         </div>
-        <div className="text-container" contentEditable="true" suppressContentEditableWarning style={textStyle} ref={this.textArea}>{displayed}</div>
+        <div id="cardText" className="text-container" contentEditable="true" suppressContentEditableWarning style={textStyle} ref={this.textArea}>{displayed}</div>
       </div>
     );
   }
